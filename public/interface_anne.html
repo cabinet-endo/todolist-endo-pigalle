@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface Anne</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-sender="Anne">
+    <h1>Interface Anne</h1>
+    
+    <h2>Créer une nouvelle tâche</h2>
+    <form id="newTaskForm">
+        <input type="text" id="taskTitle" placeholder="Titre de la tâche" required>
+        <select id="taskRecipient" required>
+            <option value="">Choisir un destinataire</option>
+            <option value="Arnaud">Arnaud</option>
+            <option value="Julien">Julien</option>
+            <option value="Assistante">Assistante</option>
+            <option value="Anne">Anne</option>
+        </select>
+        <select id="taskSound" required>
+            <option value="">Choisir un son</option>
+            <option value="notification1">Notification 1</option>
+            <option value="notification2">Notification 2</option>
+            <option value="notification3">Notification 3</option>
+        </select>
+        <select id="taskUrgency" required>
+            <option value="">Choisir l'urgence</option>
+            <option value="normal">Normal</option>
+            <option value="urgent">Urgent</option>
+        </select>
+        <button type="submit">Créer la tâche</button>
+    </form>
+
+    <h2>Tâches prédéfinies</h2>
+    <div id="predefinedTasks"></div>
+
+    <h2>Créer une nouvelle tâche prédéfinie</h2>
+    <form id="newPredefinedTaskForm">
+        <input type="text" id="predefinedTaskTitle" placeholder="Titre de la tâche" required>
+        <select id="predefinedTaskRecipient" required>
+            <option value="">Choisir un destinataire</option>
+            <option value="Arnaud">Arnaud</option>
+            <option value="Julien">Julien</option>
+            <option value="Assistante">Assistante</option>
+            <option value="Anne">Anne</option>
+        </select>
+        <select id="predefinedTaskSound" required>
+            <option value="">Choisir un son</option>
+            <option value="notification1">Notification 1</option>
+            <option value="notification2">Notification 2</option>
+            <option value="notification3">Notification 3</option>
+        </select>
+        <select id="predefinedTaskUrgency" required>
+            <option value="">Choisir l'urgence</option>
+            <option value="normal">Normal</option>
+            <option value="urgent">Urgent</option>
+        </select>
+        <button type="submit">Créer la tâche prédéfinie</button>
+    </form>
+
+    <h2>Modifier une tâche prédéfinie</h2>
+    <form id="editPredefinedTaskForm" style="display: none;">
+        <!-- Le contenu sera rempli dynamiquement par JavaScript -->
+    </form>
+
+    <script src="client.js"></script>
+    <script>
+        document.getElementById('newTaskForm').onsubmit = (e) => {
+            e.preventDefault();
+            const title = document.getElementById('taskTitle').value;
+            const recipient = document.getElementById('taskRecipient').value;
+            const sound = document.getElementById('taskSound').value;
+            const urgency = document.getElementById('taskUrgency').value;
+            createTask(title, recipient, sound, urgency, 'Anne');
+            e.target.reset();
+        };
+
+        document.getElementById('newPredefinedTaskForm').onsubmit = (e) => {
+            e.preventDefault();
+            const title = document.getElementById('predefinedTaskTitle').value;
+            const recipient = document.getElementById('predefinedTaskRecipient').value;
+            const sound = document.getElementById('predefinedTaskSound').value;
+            const urgency = document.getElementById('predefinedTaskUrgency').value;
+            createPredefinedTask('Anne', title, recipient, sound, urgency);
+            e.target.reset();
+        };
+
+        document.getElementById('editPredefinedTaskForm').onsubmit = (e) => {
+            e.preventDefault();
+            const id = document.getElementById('editTaskId').value;
+            const title = document.getElementById('editTaskTitle').value;
+            const recipient = document.getElementById('editTaskRecipient').value;
+            const sound = document.getElementById('editTaskSound').value;
+            const urgency = document.getElementById('editTaskUrgency').value;
+            updatePredefinedTask('Anne', id, title, recipient, sound, urgency);
+            e.target.style.display = 'none';
+        };
+    </script>
+</body>
+</html>

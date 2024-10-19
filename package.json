@@ -1,0 +1,13 @@
+{
+    "name": "projet-gestion-taches-dentaires",
+    "version": "1.0.0",
+    "description": "Système de gestion des tâches pour cabinet dentaire",
+    "main": "server/server.js",
+    "scripts": {
+        "start": "node server/server.js"
+    },
+    "dependencies": {
+        "express": "^4.21.1",
+        "ws": "^7.5.10"
+    }
+}

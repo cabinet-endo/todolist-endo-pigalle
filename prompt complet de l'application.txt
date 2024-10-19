@@ -1,0 +1,60 @@
+Créez une application web de gestion de tâches pour un cabinet dentaire avec les spécifications suivantes :
+
+1. Structure du projet :
+   - Utilisez Node.js avec Express pour le serveur.
+   - Utilisez WebSocket pour la communication en temps réel.
+   - Créez une structure de fichiers avec un dossier 'public' pour les fichiers statiques et un dossier 'server' pour le code serveur.
+
+2. Fonctionnalités principales :
+   - Quatre interfaces utilisateur distinctes : Arnaud (Dentiste 1), Julien (Dentiste 2), Assistante, et Anne (Secrétaire).
+   - Un tableau de bord pour afficher les tâches en cours.
+   - Une page pour les tâches archivées.
+   - Création de tâches personnalisées et prédéfinies.
+   - Synchronisation en temps réel des tâches entre tous les utilisateurs.
+   - Notifications sonores pour les nouvelles tâches (uniquement sur le tableau de bord).
+
+3. Détails des interfaces utilisateur :
+   - Chaque interface doit permettre de créer des tâches avec : titre, destinataire, son de notification, et niveau d'urgence.
+   - Affichage et gestion des tâches prédéfinies (création, modification, suppression).
+   - Possibilité d'envoyer des tâches prédéfinies en un clic.
+   - Chaque interface doit avoir son propre ensemble de tâches prédéfinies, stockées séparément.
+
+4. Tableau de bord :
+   - Affichage en temps réel des tâches actives.
+   - Indication du commanditaire et du destinataire pour chaque tâche.
+   - Bouton pour marquer une tâche comme terminée.
+   - Lecture d'un son de notification uniquement pour les nouvelles tâches et seulement sur cette page.
+
+5. Page des tâches archivées :
+   - Liste des tâches marquées comme terminées.
+   - Option pour supprimer définitivement les tâches archivées.
+
+6. Spécifications techniques :
+   - Utilisez HTML5, CSS3, et JavaScript vanilla pour le front-end.
+   - Implémentez WebSocket pour la communication en temps réel.
+   - Stockez les tâches prédéfinies dans le localStorage du navigateur, séparément pour chaque utilisateur.
+   - Utilisez une structure de données en mémoire côté serveur pour stocker les tâches actives et archivées.
+
+7. Détails de l'implémentation :
+   - Créez un fichier 'client.js' pour gérer toute la logique côté client, incluant la gestion des WebSockets, la création/modification/suppression des tâches, et la gestion des tâches prédéfinies.
+   - Implémentez la gestion des WebSockets dans 'server.js'.
+   - Créez des fichiers HTML séparés pour chaque interface (interface_arnaud.html, interface_julien.html, interface_assistante.html, interface_anne.html) et pour le tableau de bord (tableau_de_bord.html).
+   - Utilisez un fichier CSS commun (styles.css) pour le style de l'application.
+
+8. Fonctionnalités spécifiques :
+   - Les tâches urgentes doivent être affichées en rouge, les autres en bleu.
+   - Le son de notification ne doit être joué que sur la page du tableau de bord et uniquement pour les nouvelles tâches.
+   - Chaque interface doit pouvoir créer, modifier et supprimer ses propres tâches prédéfinies, stockées séparément dans le localStorage.
+   - Utilisez l'attribut data-sender dans le body de chaque interface HTML pour identifier l'expéditeur des tâches.
+
+9. Gestion des erreurs et de la connexion :
+   - Implémentez une reconnexion automatique en cas de perte de connexion WebSocket.
+   - Assurez-vous que l'application gère correctement les erreurs de connexion et les données invalides.
+
+10. Contenu des fichiers principaux :
+    - client.js : Doit contenir toutes les fonctions côté client, y compris la gestion des WebSockets, la création/modification/suppression des tâches, la gestion des tâches prédéfinies, et la mise à jour de l'interface utilisateur.
+    - server.js : Doit configurer le serveur Express, gérer les connexions WebSocket, et implémenter la logique de gestion des tâches côté serveur.
+    - Fichiers HTML : Doivent inclure les formulaires pour la création de tâches, la gestion des tâches prédéfinies, et les scripts nécessaires.
+    - styles.css : Doit définir le style pour tous les éléments de l'interface, y compris la différenciation des tâches urgentes et normales.
+
+Veuillez fournir le code complet pour cette application, y compris tous les fichiers nécessaires (HTML, CSS, JavaScript côté client et serveur), ainsi que les instructions pour l'installation et l'exécution de l'application.
