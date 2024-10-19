@@ -6,10 +6,11 @@ let isDashboard = false;
 let currentUser = '';
 
 function connectWebSocket() {
-    socket = new WebSocket(`ws://${window.location.host}`);
+    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+    socket = new WebSocket(`${protocol}//${window.location.host}`);
 
     socket.onopen = () => {
-        console.log('Connecté au serveur WebSocket');
+        console.log('Connected to WebSocket server');
     };
 
     socket.onmessage = (event) => {
@@ -32,7 +33,7 @@ function connectWebSocket() {
     };
 
     socket.onclose = () => {
-        console.log('Déconnecté du serveur WebSocket');
+        console.log('Disconnected from WebSocket server');
         setTimeout(connectWebSocket, 5000);
     };
 }
@@ -103,7 +104,7 @@ function updateArchivedTasks() {
 function playSound(soundName) {
     if (isDashboard) {
         const audio = new Audio(`sounds/${soundName}.mp3`);
-        audio.play();
+        audio.play().catch(e => console.error('Error playing sound:', e));
     }
 }
 
